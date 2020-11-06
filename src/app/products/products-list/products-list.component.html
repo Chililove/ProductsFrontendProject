@@ -1,4 +1,6 @@
 <ul>
-  <li *ngFor="let product of products">{{product.name}}{{product.color}}</li>
+  <li *ngFor="let product of products">
+  <a routerLink="/products/{{product.id}}">{{product.name}}{{product.color}}</a>
+  </li>
 </ul>
-<button (click)="CountOneUp()">Click me!</button>
+<button routerLink="/product-add">Add Product</button>
