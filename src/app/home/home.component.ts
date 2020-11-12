@@ -1,15 +1,15 @@
+﻿import {Product} from '../shared/models/product';
+
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../shared/models/product';
-import {AuthenticationService} from '../shared/services/authentication.services';
 import {ProductService} from '../shared/services/product.service';
+import {AuthenticationService} from '../shared/services/authentication.services';
+
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+  templateUrl: 'home.component.html'
 })
-export class WelcomeComponent implements OnInit {
-  title = 'Welcome';
+
+export class HomeComponent implements OnInit {
   products: Product[] = [];
   username: string;
   errormessage: '';
@@ -19,12 +19,15 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // get users from secure api end point
     this.productService.getProducts()
-      .subscribe(products => {
+      .subscribe(
+        products => {
           this.products = products;
         },
         error => {
           this.errormessage = error.message;
         });
   }
+
 }

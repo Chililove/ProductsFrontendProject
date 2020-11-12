@@ -7,6 +7,15 @@ import {ProductsListComponent} from './products/products-list/products-list.comp
 import {WelcomeComponent} from './welcome/welcome.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductAddComponent } from './products/product-add/product-add.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ProductUpdateComponent } from './products/product-update/product-update.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import {ProductService} from './shared/services/product.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from './guards/authentication.guard';
+import {AuthenticationService} from './shared/services/authentication.services';
+import {JwtInterceptor} from './shared/services/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -15,13 +24,21 @@ import { ProductAddComponent } from './products/product-add/product-add.componen
     NavbarComponent,
     WelcomeComponent,
     ProductDetailsComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductUpdateComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ AuthGuard,
+    AuthenticationService,
+    ProductService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

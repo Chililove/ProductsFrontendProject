@@ -13,9 +13,11 @@ product: Product;
 
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
-  // tslint:disable-next-line:typedef
-  ngOnInit() {
+  ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.product = this.productService.getProductById(id);
+    this.productService.getProductById(id)
+      .subscribe(productsFromBackend => {
+        this.product = productsFromBackend;
+      });
   }
 }

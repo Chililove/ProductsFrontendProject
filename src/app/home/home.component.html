@@ -1,18 +1,10 @@
-<h1>
-  {{ title }}!
-</h1>
-<h3>I think i'm cool</h3>
-<h3>I'm gonna be the greatest programmer</h3>
-<h3>This is just a stepping stone my friend</h3>
-<h3>Rome wasn't build in a day, you know ^ ^</h3>
-<h3>Hopefully this will work!</h3>
-<div class="col-md-6 col-md-offset-3">
-  <h2>Home</h2> Logged in as: {{username}}
+﻿﻿<div class="col-md-6 col-md-offset-3">
+  <h2>Home</h2>
   <p *ngIf="errormessage; else elseBlock" class="alert alert-danger">{{errormessage}}</p>
   <ng-template #elseBlock>
     <p>You're logged in {{username}}!</p>
     <div>
-      TodoItems from secure api end point:
+      Products from secure api end point, hopefully
       <ul>
         <li *ngFor="let product of products">{{product.id}}:{{product.name}}, Complete:{{product.isComplete}}</li>
       </ul>
@@ -20,4 +12,3 @@
   </ng-template>
   <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
-

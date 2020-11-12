@@ -1,10 +1,15 @@
-export class Product {
-  id: number;
-  name: string;
-  color: string;
+
+export interface Product {
+  id?: number;
+  name: string; // manditory
+  color?: string; // ? means this field is optional
+  type?: string;
+  price?: number;
+  /*color: string
   type: string;
   price: number;
-  createdDate: number;
+  createdDate: number;*/
+  /*isComplete: boolean;*/
 }
 
 

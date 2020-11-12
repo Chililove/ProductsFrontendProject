@@ -1,6 +1,7 @@
 <ul>
-  <li *ngFor="let product of products">
+  <li class="list" *ngFor="let product of products">
   <a routerLink="/products/{{product.id}}">{{product.name}}{{product.color}}</a>
+    <button routerLink="/product-update/{{product.id}}">Update</button>
   </li>
 </ul>
 <button routerLink="/product-add">Add Product</button>
